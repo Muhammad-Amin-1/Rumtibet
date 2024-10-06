@@ -1,0 +1,22 @@
+.input {
+  @include flex-center(true);
+  position: relative;
+  color: inherit;
+
+  padding-inline: 16px;
+  font-weight: 700;
+  height: 52px;
+  border: var(--border);
+  background-color: transparent;
+  width: 100%;
+
+  &::placeholder {
+    color: var(--color-light);
+    font-size: 16px;
+  }
+
+  &::-webkit-calendar-picker-indicator {
+    opacity: 0;
+  }
+}
+

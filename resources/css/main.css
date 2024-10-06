@@ -1,0 +1,472 @@
+@charset "UTF-8";
+/**
+  Нормализация блочной модели
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/**
+  Убираем внутренние отступы слева тегам списков,
+  у которых есть атрибут class
+ */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+  Убираем внешние отступы body и двум другим тегам,
+  у которых есть атрибут class
+ */
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+  Убираем внешние отступы вертикали нужным тегам,
+  у которых есть атрибут class
+ */
+:where(h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+  Убираем стандартный маркер маркированному списку,
+  у которого есть атрибут class
+ */
+:where(ul[class]) {
+  list-style: none;
+}
+
+/**
+  Обнуляем вертикальные внешние отступы параграфа,
+  объявляем локальную переменную для внешнего отступа вниз,
+  чтобы избежать взаимодействие с более сложным селектором
+ */
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+/**
+  Внешний отступ вниз для параграфа без атрибута class,
+  который расположен не последним среди своих соседних элементов
+ */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+  Упрощаем работу с изображениями
+ */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/**
+  Наследуем свойства шрифт для полей ввода
+ */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  height: 100%;
+  /**
+    Плавный скролл
+   */
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  min-height: 100%;
+  /**
+    Унифицированный интерлиньяж
+   */
+  line-height: 1.5;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+ */
+svg *[fill] {
+  fill: currentColor;
+}
+
+svg *[stroke] {
+  stroke: currentColor;
+}
+
+/**
+  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+ */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+  Удаляем все анимации и переходы для людей,
+  которые предпочитают их не использовать
+ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+@font-face {
+  font-family: "Next-Art";
+  src: url("../../resources/fonts/NEXT ART_Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+body {
+  font-size: var(--font-size);
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  line-height: var(--lign-height);
+  color: var(--color-dark);
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+h2 {
+  font-weight: 800;
+  font-size: 32px;
+}
+
+h3 {
+  font-weight: 700;
+}
+
+.container {
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+
+@media (max-width: 767px) {
+  .hidden-mobile {
+    display: none !important;
+  }
+}
+
+:root {
+  --color-dark: #18121E;
+  --color-light: #FDFDFD;
+  --color-accent: #F2BE22;
+  --color-gray: #F3F5F4;
+  --color-green: #1A3E3E;
+  --font-family-base: "Nunito Sans", sans-serif;
+  --line-height: 1.5;
+  --font-size: 18px;
+  --border: 1px solid var(--color-light);
+  --border-radius-s: 4px;
+  --border-radius-m: 6px;
+  --border-radius-l: 10px;
+  --border-radius-xl: 24px;
+  --border-radius-2xl: 32px;
+  --border-radius-3xl: 50px;
+  --shadow: rgba(24, 18, 30, 0.12);
+  --container-width: 1180px;
+  --container-padding-x: 16px;
+  --section-padding-y-s: 80px;
+  --section-padding-y-m: 100px;
+  --button-height: 52px;
+  --pudding-inline-btn: 36px;
+  --transition-duration: 0.2s;
+}
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  height: var(--button-height);
+  padding-inline: 24px;
+  border-radius: var(--border-radius-s);
+  color: var(--color-light);
+  background-color: var(--color-green);
+}
+@media (max-width: 1023px) {
+  .button {
+    font-size: 16px;
+    padding-inline: 24px;
+    --button-height: 44px;
+  }
+}
+.button:hover {
+  background-color: var(--color-accent);
+  color: var(--color-dark);
+}
+.button-light {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  max-width: 213px;
+}
+
+.input {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: inherit;
+  padding-inline: 16px;
+  font-weight: 700;
+  height: 52px;
+  border: var(--border);
+  background-color: transparent;
+  width: 100%;
+}
+.input::placeholder {
+  color: var(--color-light);
+  font-size: 16px;
+}
+.input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+.grid {
+  --gridColumns: 1;
+  display: grid;
+  grid-template-columns: repeat(var(--gridColumns), 1fr);
+}
+.grid--2 {
+  --gridColumns: 2;
+}
+.grid--3 {
+  --gridColumns: 3;
+}
+.grid--4 {
+  --gridColumns: 4;
+}
+.grid--5 {
+  --gridColumns: 5;
+}
+.grid--6 {
+  --gridColumns: 6;
+}
+.grid--7 {
+  --gridColumns: 7;
+}
+.grid--8 {
+  --gridColumns: 8;
+}
+.grid--9 {
+  --gridColumns: 9;
+}
+.grid--10 {
+  --gridColumns: 10;
+}
+.grid--11 {
+  --gridColumns: 11;
+}
+.grid--12 {
+  --gridColumns: 12;
+}
+
+.header {
+  padding-top: 16px;
+  font-weight: 600;
+}
+@media (max-width: 1280px) {
+  .header {
+    font-size: 14px;
+  }
+}
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 49px;
+}
+@media (max-width: 1280px) {
+  .header__inner {
+    column-gap: 30px;
+  }
+}
+@media (max-width: 1023px) {
+  .header__logo {
+    max-width: 84px;
+    height: 44px;
+  }
+}
+.header__menu {
+  margin-left: auto;
+}
+@media (max-width: 1023px) {
+  .header__menu {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    white-space: nowrap !important;
+    clip-path: inset(100%) !important;
+    clip: rect(0 0 0 0) !important;
+    overflow: hidden !important;
+  }
+}
+.header__menu-list {
+  display: flex;
+  align-items: center;
+  column-gap: 24px;
+}
+@media (max-width: 1280px) {
+  .header__menu-list {
+    column-gap: 20px;
+  }
+}
+.header__menu-link {
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+@media (hover: hover) {
+  .header__menu-link:hover::after {
+    width: 100%;
+  }
+}
+@media (hover: none) {
+  .header__menu-link:active::after {
+    width: 100%;
+  }
+}
+.header__menu-link::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  translate: -50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent);
+  transition-duration: inherit;
+}
+
+.section-rumtibet {
+  padding-top: 340px;
+  padding-bottom: 82px;
+}
+
+.rumtibet {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+.rumtibet__title {
+  font-size: 50px;
+  max-width: 1080px;
+  font-family: "Next-Art";
+  line-height: 150%;
+}
+.rumtibet__location {
+  padding: 40px 42px;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+  border-radius: var(--border-radius-l);
+}
+.rumtibet__list {
+  display: flex;
+  column-gap: 24px;
+  align-items: start;
+}
+.rumtibet__item {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column-reverse;
+  row-gap: 8px;
+  width: 100%;
+  max-width: 270px;
+  position: relative;
+}
+.rumtibet__item:nth-child(2n+1)::after {
+  content: "";
+  background-image: url("../../../resources/images/icons/Vector-1.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 15px;
+  height: 8px;
+  top: 22px;
+  right: 18px;
+}
+
+.section-top {
+  background-image: url("../../../resources/images/photo-top.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--color-light);
+}

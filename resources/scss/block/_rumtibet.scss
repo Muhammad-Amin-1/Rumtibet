@@ -1,0 +1,59 @@
+.section-rumtibet {
+  padding-top: 340px;
+  padding-bottom: 82px;
+}
+
+.rumtibet {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+
+  &__title {
+    font-size: 50px;
+    max-width: 1080px;
+    font-family: 'Next-Art';
+    line-height: 150%;
+  }
+
+  &__location {
+    padding: 40px 42px;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(6px);
+    border-radius: var(--border-radius-l);
+  }
+
+  // &__form {
+  //   display: flex;
+  //   justify-content: space-between;
+  //   align-items: start;
+  // }
+
+  &__list {
+    display: flex;
+    column-gap: 24px;
+    align-items: start;
+  }
+
+  &__item {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column-reverse;
+    row-gap: 8px;
+    width: 100%;
+    max-width: 270px;
+    position: relative;
+
+
+    &:nth-child(2n+1)::after{
+      content: '';
+      background-image: url('../../../resources/images/icons/Vector-1.svg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: absolute;
+      width: 15px;
+      height: 8px;
+      top: 22px;
+      right: 18px;
+    }
+  }
+}

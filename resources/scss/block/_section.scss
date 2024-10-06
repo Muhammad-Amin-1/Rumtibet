@@ -1,0 +1,10 @@
+.section {
+
+  &-top {
+    background-image: url('../../../resources/images/photo-top.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--color-light);
+  }
+}
