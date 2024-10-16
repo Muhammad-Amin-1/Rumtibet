@@ -1,0 +1,110 @@
+.popular {
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+
+  @include mobile {
+    row-gap: 32px;
+  }
+
+  &__list {
+    display: flex;
+    column-gap: 20px;
+  }
+
+  &__item {
+    @include hover {
+      .popular__overlay {
+        transform: translateY(-100%);
+      }
+    }
+  }
+
+  &__card {
+    position: relative;
+    overflow: hidden;
+    max-height: 500px;
+    border-radius: 32px;
+
+    // @include hover {
+    //   .popular__overlay {
+    //     transform: translateY(-100%);
+    //   }
+    // }
+
+
+    &__img {
+      border-radius: 32px;
+    }
+
+    &-zvezda {
+      font-size: 14px;
+      font-weight: 700;
+      position: absolute;
+      top: 50px;
+      right: 0;
+      padding: 8px 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      column-gap: 3px;
+      background-color: rgba(253, 253, 253, 0.4);
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+  }
+
+  &__overlay {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 38px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(6px);
+    width: 100%;
+    height: 100%;
+    border-radius: 32px;
+    transition: all 2s ease-in-out;
+    transform: translateY(-90px);
+
+    
+    &-header {
+      display: flex;
+      column-gap: 35px;
+    }
+
+    &-text {
+      font-size: 14px;
+    }
+    
+    &-text-s {
+      font-size: 16px;
+    }
+
+    &-title {
+      font-size: 24px;
+    }
+    
+    &-prise {
+      font-weight: 700;
+      font-size: 20px;
+      padding: 8px 16px;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 4px;
+      max-height: 40px;
+    }
+
+    &-btn {
+      margin-top: 67px;
+    }
+  }
+
+
+  &__card-1 {
+    @include hover {
+      .popular__overlay {
+      }
+    }
+  }
+}
