@@ -1,0 +1,131 @@
+.section-p-0 {
+  padding-bottom: 0px;
+
+  @include mobile {
+    padding-bottom: 50px;
+  }
+}
+
+.section-form {
+  @include mobile-s {
+    padding-bottom: 50px;
+  }
+}
+
+.footer__body {
+  position: relative;
+  top: 100px;
+  z-index: 100;
+  padding: 50px 100px;
+  display: flex;
+  column-gap: 64px;
+  border-radius: 6px;
+  box-shadow: 0 0 15px rgba(24, 18, 30, 0.12);
+  background-color: var(--color-light);
+
+  @include tablet {
+    padding: 24px;
+  }
+
+  @include mobile {
+    flex-direction: column;
+    row-gap: 18px;
+    position: static;
+  }
+
+  & > header {
+    max-width: 380px;
+  }
+  & > header > div {
+    font-size: 18px;
+    @include mobile {
+      font-size: 16px;
+    }
+  }
+  & > header > h2 {
+    font-size: 26px;
+    @include mobile {
+      font-size: 24px;
+    }
+  }
+
+  &-form {
+    display: flex;
+    column-gap: 16px;
+    align-items: end;
+
+    @include desktop {
+      flex-direction: column;
+      align-items: start;
+      row-gap: 16px;
+    }
+
+    &__vert {
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+      width: 100%;
+      max-width: 280px;
+
+      @include desktop {
+        max-width: 100%;
+      }
+
+      & > label {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &-input {
+    background-color: rgba(243, 245, 244, 1);
+    border: none;
+    border-radius: 4px;
+    height: 44px;
+    padding: 16px;
+    width: 100%;
+
+    &::placeholder {
+      color: black;
+    }
+  }
+
+  &-btn {
+    width: 100%;
+    max-width: 240px;
+    white-space: nowrap;
+    height: 44px;
+
+    @include desktop {
+      align-self: end;
+    }
+
+    @include tablet {
+      max-width: 100%;
+    }
+
+    @include mobile-s {
+      max-width: 240px;
+      align-self: start;
+    }
+  }
+
+  &-text {
+    margin-top: 8px;
+    max-width: 536px;
+    font-size: 14px;
+
+    @include mobile {
+      margin-top: 24px;
+    }
+    @include mobile-s {
+      max-width: 310px;
+    }
+
+    & > a {
+      cursor: pointer;
+      text-decoration: underline;
+      text-decoration-skip-ink: none;
+    }
+  }
+}

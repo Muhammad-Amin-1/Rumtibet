@@ -1,0 +1,9 @@
+.section {
+  padding-top: var(--section-padding-y-s);
+  padding-bottom: var(--section-padding-y-m);
+
+  @include mobile {
+    --section-padding-y-s: 50px;
+    --section-padding-y-m: 50px;
+  }
+}

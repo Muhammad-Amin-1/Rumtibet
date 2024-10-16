@@ -3,20 +3,39 @@
   position: relative;
   color: inherit;
 
+  width: 100%;
   padding-inline: 16px;
   font-weight: 700;
   height: 52px;
   border: var(--border);
+  border-radius: 8px;
   background-color: transparent;
-  width: 100%;
+
+  @include tablet {
+    padding-inline: 10px;
+    height: 43px;
+  }
+
 
   &::placeholder {
     color: var(--color-light);
     font-size: 16px;
+
+    @include tablet {
+      font-size: 14px;
+    }
   }
 
   &::-webkit-calendar-picker-indicator {
     opacity: 0;
   }
+
+  @include hover {
+    border-color: var(--color-accent);
+    opacity: 0.9;
+  }
 }
 
+label + input {
+  font-size: 14px;
+}

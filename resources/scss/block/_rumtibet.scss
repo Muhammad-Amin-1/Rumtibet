@@ -1,6 +1,16 @@
 .section-rumtibet {
   padding-top: 340px;
-  padding-bottom: 82px;
+  padding-bottom: 90px;
+
+  @include tablet {
+    padding-top: 260px;
+    padding-bottom: 70px;
+  }
+
+  @include mobile-s {
+    padding-top: 234;
+    padding-bottom: 50px;
+  }
 }
 
 .rumtibet {
@@ -8,11 +18,35 @@
   flex-direction: column;
   row-gap: 40px;
 
+  @include mobile-s {
+    row-gap: 20px;
+  }
+
+  
+
   &__title {
     font-size: 50px;
     max-width: 1080px;
     font-family: 'Next-Art';
     line-height: 150%;
+
+    @include desktop {
+      max-width: 800px;
+      font-size: 40px;
+    }
+
+    @include tablet {
+      font-size: 30px;
+    }
+    
+    @include mobile {
+      font-size: 28px;
+    }
+
+    @media(max-width: 350px){
+      font-size: 22px;
+    }
+
   }
 
   &__location {
@@ -20,18 +54,39 @@
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(6px);
     border-radius: var(--border-radius-l);
+
+    @include tablet {
+      padding: 25px 5px;
+    }
+
+    @include mobile {
+      padding: 30px;
+    }
+
+    @include mobile-s {
+      padding: 10px;
+    }
   }
 
-  // &__form {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   align-items: start;
-  // }
-
-  &__list {
+  &__form {
     display: flex;
-    column-gap: 24px;
+    justify-content: space-between;
     align-items: start;
+    column-gap: 24px;
+
+    @include tablet {
+      justify-content: space-evenly;
+      row-gap:  25px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      justify-content: space-evenly;
+    }
+
+    @include mobile-s {
+      row-gap:  15px;
+    }
   }
 
   &__item {
@@ -43,6 +98,36 @@
     max-width: 270px;
     position: relative;
 
+    @include tablet {
+      row-gap: 5px;
+      
+    }
+
+    @media (max-width: 900px) {
+      max-width: 300px;
+    }
+    
+    @include mobile {
+      max-width: 100%;
+    }
+
+    &:last-child {
+      max-width: 213px;
+
+      @include tablet {
+        max-width: 300px;
+        margin-inline: auto;
+      }
+
+      @media (max-width: 900px) {
+        margin-inline: 0;
+      }
+
+      @include mobile-s {
+        max-width: 152px;
+      }
+
+    }
 
     &:nth-child(2n+1)::after{
       content: '';
@@ -53,6 +138,18 @@
       width: 15px;
       height: 8px;
       top: 22px;
+      right: 18px;
+    }
+
+    &:nth-child(2)::after{
+      content: '';
+      background-image: url('../../../resources/images/icons/Vector-2.svg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      top: 16px;
       right: 18px;
     }
   }

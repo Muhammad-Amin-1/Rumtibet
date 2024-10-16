@@ -1,0 +1,49 @@
+.section__header {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  max-width: 580px;
+
+  @include tablet {
+    font-size: 28px;
+  }
+
+  @include mobile {
+    max-width: 358px;
+  }
+
+  &-text {
+    font-size: 24px;
+    color: var(--color-accent);
+
+    @include tablet {
+      font-size: 20px;
+    }
+
+    @include mobile {
+      font-size: 16px;
+    }
+  }
+
+  &-title {
+    font-weight: 800;
+    font-size: 32px;
+  
+    @include tablet {
+      font-size: 28px;
+    }
+
+    @include mobile {
+      font-size: 24px;
+    }
+  }
+
+  &-text-center {
+    text-align: center;
+  }
+}
+
+.header__center {
+  display: flex;
+  justify-content: center;
+}

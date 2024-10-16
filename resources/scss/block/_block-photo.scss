@@ -1,0 +1,130 @@
+.section__photo {
+  overflow-x: hidden;
+}
+
+.photo {
+  display: flex;
+  flex-direction: column;
+  row-gap: 45px;
+
+  @include mobile-s {
+    row-gap: 32px;
+  }
+
+  @include mobile-s {
+    column-gap: 32px;
+  }
+
+  &__list {
+    gap: 20px;
+    grid-auto-flow: dense;
+
+    @include tablet {
+      --gridColumns: 3;
+    }
+    @include mobile {
+      --gridColumns: 2;
+    }
+
+    @include mobile-s {
+      --gridColumns: 6;
+      scroll-snap-type: x mandatory;
+      overflow-x: scroll;
+      width: 100vw;
+    }
+
+    & > :first-child {
+      grid-column-start: span 2;
+
+      @include mobile-s {
+        grid-column-start: span 1;
+      }
+    }
+
+    & > :nth-child(4) {
+      @include tablet {
+        grid-column-start: span 2;
+      }
+
+      @include mobile {
+        grid-column-start: span 1;
+      }
+    }
+
+    & > :nth-child(5) {
+      grid-column-start: span 2;
+
+      @include mobile {
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
+      @include mobile-s {
+        grid-column-start: span 1;
+        grid-column-end: span 1;
+      }
+    }
+
+    & > :last-child {
+      @include mobile-s {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  &__item {
+    @include mobile-s {
+      scroll-snap-align: start;
+      min-width: 280px;
+    }
+
+    & img {
+      width: 100%;
+    }
+  }
+
+  & > :last-child {
+    margin: 0 auto;
+  }
+
+  &__img {
+    border-radius: 6px;
+    transition: 0.5s;
+  }
+
+  &__card {
+    position: relative;
+    overflow: hidden;
+
+    @include hover {
+      .photo__img {
+        transform: scale(1.1);
+      }
+    }
+
+  }
+
+  &__overlay {
+    position: absolute;
+    width: 100%;
+    height: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    overflow: hidden;
+    background-color: rgba(26, 62, 62, 0.3);
+    transition: 0s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+  }
+
+  &__card {
+    @include hover {
+      .photo__overlay {
+        height: 100%;
+      }
+    }
+  }
+}
