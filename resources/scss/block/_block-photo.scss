@@ -94,6 +94,7 @@
   &__card {
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 
     @include hover {
       .photo__img {

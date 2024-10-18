@@ -40,10 +40,18 @@
 
   &-text-center {
     text-align: center;
+
+    @include mobile-s {
+      text-align: left;
+    }
   }
 }
 
 .header__center {
   display: flex;
   justify-content: center;
+
+  @include mobile-s {
+    justify-content: start;
+  }
 }

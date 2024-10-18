@@ -69,6 +69,9 @@
   }
 
   &__body {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
     max-width: 580px;
     // padding: 64px 0;
 
@@ -78,6 +81,7 @@
 
     @include mobile {
      max-width: 580px;
+     row-gap: 32px;
    } 
   }
 

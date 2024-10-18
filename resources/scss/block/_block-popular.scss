@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   row-gap: 50px;
-
+  
   @include mobile {
     row-gap: 32px;
   }
@@ -10,12 +10,18 @@
   &__list {
     display: flex;
     column-gap: 20px;
+
+    @include tablet {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
   }
 
   &__item {
     @include hover {
       .popular__overlay {
-        transform: translateY(-100%);
+        top: 0;
       }
     }
   }
@@ -26,15 +32,12 @@
     max-height: 500px;
     border-radius: 32px;
 
-    // @include hover {
-    //   .popular__overlay {
-    //     transform: translateY(-100%);
-    //   }
-    // }
-
-
+    @include mobile-s {
+      max-height: 430px;
+    }
     &__img {
       border-radius: 32px;
+      height: auto;
     }
 
     &-zvezda {
@@ -55,37 +58,55 @@
   }
 
   &__overlay {
+    position: absolute;
+    top: 80%;
+    left: 0;
+    transition: all 1s ease-in-out;
     padding: 32px;
-    display: flex;
-    flex-direction: column;
-    row-gap: 38px;
-    color: white;
-    background-color: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(6px);
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 38px;
+    backdrop-filter: blur(6px);
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 32px;
-    transition: all 2s ease-in-out;
-    transform: translateY(-90px);
 
-    
+    @include mobile-s {
+      padding: 20px;
+    }
+
     &-header {
       display: flex;
       column-gap: 35px;
+      justify-content: space-between;
+
+      @include mobile-s {
+        column-gap: 20px;
+      }
     }
 
     &-text {
       font-size: 14px;
     }
-    
+
     &-text-s {
       font-size: 16px;
     }
 
     &-title {
       font-size: 24px;
+
+      @include desktop {
+        font-size: 20px;
+      }
+      @include mobile-s {
+        font-size: 18px;
+      }
     }
-    
+
     &-prise {
       font-weight: 700;
       font-size: 20px;
@@ -93,18 +114,14 @@
       background-color: rgba(255, 255, 255, 0.3);
       border-radius: 4px;
       max-height: 40px;
-    }
 
-    &-btn {
-      margin-top: 67px;
+      @include mobile-s {
+        font-size: 16px;
+      }
     }
   }
 
-
-  &__card-1 {
-    @include hover {
-      .popular__overlay {
-      }
-    }
+  & .button {
+    margin: 0 auto;
   }
 }
